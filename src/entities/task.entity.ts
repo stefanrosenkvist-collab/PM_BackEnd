@@ -3,12 +3,14 @@ import {
   PrimaryColumn,
   Column,
   ManyToOne,
+  OneToMany,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { Project } from './project.entity';
 import { TeamMember } from './team-member.entity';
+import { Arbetsorder } from './arbetsorder.entity';
 
 @Entity('Task')
 export class Task {
@@ -46,6 +48,9 @@ export class Task {
 
   @Column('text', { array: true, default: [] })
   tags: string[];
+
+  @OneToMany(() => Arbetsorder, (arbetsorder) => arbetsorder.task)
+  arbetsorders: Arbetsorder[];
 
   @CreateDateColumn({ name: 'createdAt' })
   createdAt: Date;

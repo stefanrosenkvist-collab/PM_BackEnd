@@ -13,6 +13,7 @@ exports.Task = void 0;
 const typeorm_1 = require("typeorm");
 const project_entity_1 = require("./project.entity");
 const team_member_entity_1 = require("./team-member.entity");
+const arbetsorder_entity_1 = require("./arbetsorder.entity");
 let Task = class Task {
 };
 exports.Task = Task;
@@ -62,6 +63,10 @@ __decorate([
     (0, typeorm_1.Column)('text', { array: true, default: [] }),
     __metadata("design:type", Array)
 ], Task.prototype, "tags", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => arbetsorder_entity_1.Arbetsorder, (arbetsorder) => arbetsorder.task),
+    __metadata("design:type", Array)
+], Task.prototype, "arbetsorders", void 0);
 __decorate([
     (0, typeorm_1.CreateDateColumn)({ name: 'createdAt' }),
     __metadata("design:type", Date)

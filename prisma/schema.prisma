@@ -42,6 +42,7 @@ model Task {
 
   dueDate   DateTime?
   tags      String[]
+  arbetsorders Arbetsorder[] @relation("TaskToArbetsorder")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
@@ -56,4 +57,39 @@ model TeamMember {
   tasks Task[] @relation("TaskToAssignee")
 
   createdAt DateTime @default(now())
+}
+
+model Arbetsorder {
+  id        String  @id @default(cuid())
+  taskId    String?
+  task      Task?   @relation("TaskToArbetsorder", fields: [taskId], references: [id])
+
+  // Header fields
+  addressWorkplace        String?
+  ourOrderNumber          String?
+  customerOrderNumber     String?
+  contactPersonTel        String?
+  workType                String?
+
+  // Work start checkboxes (stored as JSON array)
+  workStartCheckboxes     String[]
+
+  // Work completion checkboxes
+  workCompletionCheckboxes String[]
+
+  // Material usage
+  materialUsageCheckboxes  String[]
+  materialSpecification    String?  @db.Text
+
+  // Risk assessment
+  noSeriousRisksIdentified Boolean @default(false)
+  risksIdentified          Boolean @default(false)
+  riskContactNote          String?
+  riskCategories           String[]
+  controlledItems          String[]
+  riskDescription          String?  @db.Text
+  riskActionInstruction    String?  @db.Text
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }

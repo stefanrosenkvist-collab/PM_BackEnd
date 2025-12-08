@@ -45,9 +45,11 @@ const typeorm_1 = require("@nestjs/typeorm");
 const projects_module_1 = require("./projects/projects.module");
 const tasks_module_1 = require("./tasks/tasks.module");
 const team_module_1 = require("./team/team.module");
+const arbetsorder_module_1 = require("./arbetsorder/arbetsorder.module");
 const project_entity_1 = require("./entities/project.entity");
 const task_entity_1 = require("./entities/task.entity");
 const team_member_entity_1 = require("./entities/team-member.entity");
+const arbetsorder_entity_1 = require("./entities/arbetsorder.entity");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 // Get DATABASE_URL from environment
@@ -64,13 +66,14 @@ exports.AppModule = AppModule = __decorate([
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 url: databaseUrl, // TypeORM can parse the connection URL directly
-                entities: [project_entity_1.Project, task_entity_1.Task, team_member_entity_1.TeamMember],
+                entities: [project_entity_1.Project, task_entity_1.Task, team_member_entity_1.TeamMember, arbetsorder_entity_1.Arbetsorder],
                 synchronize: false, // Set to false for production, use migrations instead
                 logging: true, // Enable all logging to see the actual error
             }),
             projects_module_1.ProjectsModule,
             tasks_module_1.TasksModule,
             team_module_1.TeamModule,
+            arbetsorder_module_1.ArbetsorderModule,
         ],
     })
 ], AppModule);
