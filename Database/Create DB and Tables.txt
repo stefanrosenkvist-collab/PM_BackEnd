@@ -1,0 +1,120 @@
+
+Install PostgreSQL
+The default DB Admin user (SA) is named "postgres". Remember the password!
+
+-------------------------------------------------------------------------------------------------------
+-- Database: pm_db
+-- DROP DATABASE IF EXISTS pm_db;
+-------------------------------------------------------------------------------------------------------
+CREATE DATABASE pm_db
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Swedish_Sweden.1252'
+    LC_CTYPE = 'Swedish_Sweden.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+
+GRANT TEMPORARY, CONNECT ON DATABASE pm_db TO PUBLIC;
+
+GRANT ALL ON DATABASE pm_db TO postgres;
+
+-------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------
+-- Table: public.Project
+-- DROP TABLE IF EXISTS public."Project";
+-------------------------------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public."Project"
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    description text COLLATE pg_catalog."default",
+    status text COLLATE pg_catalog."default" NOT NULL,
+    priority text COLLATE pg_catalog."default" NOT NULL,
+    "startDate" timestamp(3) without time zone NOT NULL,
+    "endDate" timestamp(3) without time zone,
+    progress integer NOT NULL DEFAULT 0,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Project_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Project"
+    OWNER to postgres;
+
+-------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------
+-- Table: public.Task
+-- DROP TABLE IF EXISTS public."Task";
+-------------------------------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public."Task"
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    "projectId" text COLLATE pg_catalog."default" NOT NULL,
+    title text COLLATE pg_catalog."default" NOT NULL,
+    description text COLLATE pg_catalog."default",
+    status text COLLATE pg_catalog."default" NOT NULL,
+    priority text COLLATE pg_catalog."default" NOT NULL,
+    "assigneeId" text COLLATE pg_catalog."default",
+    "dueDate" timestamp(3) without time zone,
+    tags text[] COLLATE pg_catalog."default",
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "Task_pkey" PRIMARY KEY (id),
+    CONSTRAINT "Task_assigneeId_fkey" FOREIGN KEY ("assigneeId")
+        REFERENCES public."TeamMember" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    CONSTRAINT "Task_projectId_fkey" FOREIGN KEY ("projectId")
+        REFERENCES public."Project" (id) MATCH SIMPLE
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."Task"
+    OWNER to postgres;
+
+-------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------
+-- Table: public.TeamMember
+-- DROP TABLE IF EXISTS public."TeamMember";
+-------------------------------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS public."TeamMember"
+(
+    id text COLLATE pg_catalog."default" NOT NULL,
+    name text COLLATE pg_catalog."default" NOT NULL,
+    email text COLLATE pg_catalog."default" NOT NULL,
+    role text COLLATE pg_catalog."default" NOT NULL,
+    status text COLLATE pg_catalog."default" NOT NULL,
+    "createdAt" timestamp(3) without time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT "TeamMember_pkey" PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."TeamMember"
+    OWNER to postgres;
+-- Index: TeamMember_email_key
+
+-- DROP INDEX IF EXISTS public."TeamMember_email_key";
+
+CREATE UNIQUE INDEX IF NOT EXISTS "TeamMember_email_key"
+    ON public."TeamMember" USING btree
+    (email COLLATE pg_catalog."default" ASC NULLS LAST)
+    WITH (fillfactor=100, deduplicate_items=True)
+    TABLESPACE pg_default;
+
+-------------------------------------------------------------------------------------------------------
+
