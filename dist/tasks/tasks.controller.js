@@ -17,9 +17,12 @@ const common_1 = require("@nestjs/common");
 const tasks_service_1 = require("./tasks.service");
 const create_task_dto_1 = require("./dto/create-task.dto");
 const update_task_dto_1 = require("./dto/update-task.dto");
+const arbetsorder_service_1 = require("../arbetsorder/arbetsorder.service");
+const create_arbetsorder_dto_1 = require("../arbetsorder/dto/create-arbetsorder.dto");
 let TasksController = class TasksController {
-    constructor(tasksService) {
+    constructor(tasksService, arbetsorderService) {
         this.tasksService = tasksService;
+        this.arbetsorderService = arbetsorderService;
     }
     create(createTaskDto) {
         return this.tasksService.create(createTaskDto);
@@ -38,6 +41,10 @@ let TasksController = class TasksController {
     }
     remove(id) {
         return this.tasksService.remove(id);
+    }
+    createArbetsorder(taskId, createArbetsorderDto) {
+        // Ensure the taskId from the URL is used
+        return this.arbetsorderService.create(Object.assign(Object.assign({}, createArbetsorderDto), { taskId }));
     }
 };
 exports.TasksController = TasksController;
@@ -77,8 +84,17 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], TasksController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Post)(':id/arbetsorder'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, create_arbetsorder_dto_1.CreateArbetsorderDto]),
+    __metadata("design:returntype", void 0)
+], TasksController.prototype, "createArbetsorder", null);
 exports.TasksController = TasksController = __decorate([
     (0, common_1.Controller)('tasks'),
-    __metadata("design:paramtypes", [tasks_service_1.TasksService])
+    __metadata("design:paramtypes", [tasks_service_1.TasksService,
+        arbetsorder_service_1.ArbetsorderService])
 ], TasksController);
 //# sourceMappingURL=tasks.controller.js.map

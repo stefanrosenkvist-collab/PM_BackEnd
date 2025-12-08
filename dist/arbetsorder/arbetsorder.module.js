@@ -20,6 +20,7 @@ exports.ArbetsorderModule = ArbetsorderModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([arbetsorder_entity_1.Arbetsorder])],
         controllers: [arbetsorder_controller_1.ArbetsorderController],
         providers: [arbetsorder_service_1.ArbetsorderService],
+        exports: [arbetsorder_service_1.ArbetsorderService],
     })
 ], ArbetsorderModule);
 //# sourceMappingURL=arbetsorder.module.js.map

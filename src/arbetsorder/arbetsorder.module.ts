@@ -8,6 +8,7 @@ import { Arbetsorder } from '../entities/arbetsorder.entity';
   imports: [TypeOrmModule.forFeature([Arbetsorder])],
   controllers: [ArbetsorderController],
   providers: [ArbetsorderService],
+  exports: [ArbetsorderService],
 })
 export class ArbetsorderModule {}
 
