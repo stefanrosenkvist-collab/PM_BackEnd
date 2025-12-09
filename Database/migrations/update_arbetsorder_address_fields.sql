@@ -11,11 +11,11 @@ ALTER TABLE IF EXISTS public."Arbetsorder"
     ADD COLUMN IF NOT EXISTS "postalCode" text COLLATE pg_catalog."default",
     ADD COLUMN IF NOT EXISTS "city" text COLLATE pg_catalog."default";
 
--- Optional: Migrate existing data from addressWorkplace to workplace (if you want to preserve old data)
--- Uncomment the following line if you want to copy existing addressWorkplace data to workplace:
--- UPDATE public."Arbetsorder" SET "workplace" = "addressWorkplace" WHERE "addressWorkplace" IS NOT NULL AND "workplace" IS NULL;
+-- Migrate existing data from addressWorkplace to workplace
+UPDATE public."Arbetsorder" 
+SET "workplace" = "addressWorkplace" 
+WHERE "addressWorkplace" IS NOT NULL AND "workplace" IS NULL;
 
--- Optional: Drop the old addressWorkplace column after migration
--- Uncomment the following line if you want to remove the old column:
--- ALTER TABLE IF EXISTS public."Arbetsorder" DROP COLUMN IF EXISTS "addressWorkplace";
+-- Drop the old addressWorkplace column after migration
+ALTER TABLE IF EXISTS public."Arbetsorder" DROP COLUMN IF EXISTS "addressWorkplace";
 
