@@ -8,7 +8,19 @@ export class CreateArbetsorderDto {
   // Header fields
   @IsString()
   @IsOptional()
-  addressWorkplace?: string;
+  workplace?: string;
+
+  @IsString()
+  @IsOptional()
+  street?: string;
+
+  @IsString()
+  @IsOptional()
+  postalCode?: string;
+
+  @IsString()
+  @IsOptional()
+  city?: string;
 
   @IsString()
   @IsOptional()

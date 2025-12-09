@@ -29,9 +29,21 @@ __decorate([
     __metadata("design:type", task_entity_1.Task)
 ], Arbetsorder.prototype, "task", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'addressWorkplace', nullable: true }),
+    (0, typeorm_1.Column)({ name: 'workplace', nullable: true }),
     __metadata("design:type", String)
-], Arbetsorder.prototype, "addressWorkplace", void 0);
+], Arbetsorder.prototype, "workplace", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'street', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "street", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'postalCode', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "postalCode", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'city', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "city", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'ourOrderNumber', nullable: true }),
     __metadata("design:type", String)

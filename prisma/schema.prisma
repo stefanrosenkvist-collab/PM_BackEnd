@@ -65,7 +65,10 @@ model Arbetsorder {
   task      Task?   @relation("TaskToArbetsorder", fields: [taskId], references: [id])
 
   // Header fields
-  addressWorkplace        String?
+  workplace               String?
+  street                  String?
+  postalCode              String?
+  city                    String?
   ourOrderNumber          String?
   customerOrderNumber     String?
   contactPersonTel        String?

@@ -22,8 +22,17 @@ export class Arbetsorder {
   task: Task | null;
 
   // Header fields
-  @Column({ name: 'addressWorkplace', nullable: true })
-  addressWorkplace: string | null;
+  @Column({ name: 'workplace', nullable: true })
+  workplace: string | null;
+
+  @Column({ name: 'street', nullable: true })
+  street: string | null;
+
+  @Column({ name: 'postalCode', nullable: true })
+  postalCode: string | null;
+
+  @Column({ name: 'city', nullable: true })
+  city: string | null;
 
   @Column({ name: 'ourOrderNumber', nullable: true })
   ourOrderNumber: string | null;
