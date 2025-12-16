@@ -24,11 +24,21 @@ async function bootstrap() {
     corsOrigins.push(`http://${host}:${frontendPort}`);
   }
   
+  // Allow additional CORS origins from environment variable (comma-separated)
+  // Example: CORS_ORIGIN=http://192.168.1.114:5173,http://192.168.1.100:5173
+  if (process.env.CORS_ORIGIN) {
+    const additionalOrigins = process.env.CORS_ORIGIN.split(',').map(origin => origin.trim());
+    corsOrigins.push(...additionalOrigins);
+  }
+  
   // Enable CORS for frontend
   app.enableCors({
     origin: corsOrigins,
     credentials: true,
   });
+  
+  // Log CORS configuration for debugging
+  console.log('CORS enabled for origins:', corsOrigins);
   
   // Enable validation pipe for DTOs
   app.useGlobalPipes(new ValidationPipe({
@@ -40,6 +50,9 @@ async function bootstrap() {
   await app.listen(port, host);
   const displayHost = host === '0.0.0.0' ? 'localhost' : host;
   console.log(`Backend running on http://${displayHost}:${port}`);
+  if (host === '0.0.0.0') {
+    console.log(`Backend accessible on all network interfaces (0.0.0.0:${port})`);
+  }
 }
 
 bootstrap();
