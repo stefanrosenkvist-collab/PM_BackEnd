@@ -56,7 +56,10 @@ async function bootstrap() {
     // Allow additional CORS origins from environment variable (comma-separated)
     // Example: CORS_ORIGIN=http://192.168.1.114:5173,http://192.168.1.100:5173
     if (process.env.CORS_ORIGIN) {
-        const additionalOrigins = process.env.CORS_ORIGIN.split(',').map(origin => origin.trim());
+        const additionalOrigins = process.env.CORS_ORIGIN
+            .split(',')
+            .map(origin => origin.trim())
+            .filter(origin => origin.length > 0); // Filter out empty strings
         corsOrigins.push(...additionalOrigins);
     }
     // Enable CORS for frontend
