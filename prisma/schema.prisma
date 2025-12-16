@@ -71,7 +71,9 @@ model Arbetsorder {
   city                    String?
   ourOrderNumber          String?
   customerOrderNumber     String?
-  contactPersonTel        String?
+  contactPerson           String?
+  contactPersonPhone      String?
+  contactPersonEmail      String?
   workType                String?
 
   // Work start checkboxes (stored as JSON array)
