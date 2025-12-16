@@ -1,6 +1,6 @@
 -------------------------------------------------------------------------------------------------------
 -- Migration: Update Arbetsorder Table - Split Address Fields
--- Date: 2025-12-09
+-- Date: 2024-12-09
 -- Description: Adds new address fields (workplace, street, postalCode, city) and migrates data from addressWorkplace
 -------------------------------------------------------------------------------------------------------
 

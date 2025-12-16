@@ -23,15 +23,16 @@ let CustomersService = class CustomersService {
         this.customerRepository = customerRepository;
     }
     async create(createCustomerDto) {
+        var _a, _b, _c, _d, _e, _f;
         const customer = this.customerRepository.create({
             id: (0, uuid_1.v4)(),
             customerName: createCustomerDto.customerName,
-            streetAddress: createCustomerDto.streetAddress || null,
-            postalCode: createCustomerDto.postalCode || null,
-            city: createCustomerDto.city || null,
-            contactPerson: createCustomerDto.contactPerson || null,
-            contactPersonPhone: createCustomerDto.contactPersonPhone || null,
-            contactPersonEmail: createCustomerDto.contactPersonEmail || null,
+            streetAddress: (_a = createCustomerDto.streetAddress) !== null && _a !== void 0 ? _a : null,
+            postalCode: (_b = createCustomerDto.postalCode) !== null && _b !== void 0 ? _b : null,
+            city: (_c = createCustomerDto.city) !== null && _c !== void 0 ? _c : null,
+            contactPerson: (_d = createCustomerDto.contactPerson) !== null && _d !== void 0 ? _d : null,
+            contactPersonPhone: (_e = createCustomerDto.contactPersonPhone) !== null && _e !== void 0 ? _e : null,
+            contactPersonEmail: (_f = createCustomerDto.contactPersonEmail) !== null && _f !== void 0 ? _f : null,
         });
         return await this.customerRepository.save(customer);
     }
@@ -56,6 +57,7 @@ let CustomersService = class CustomersService {
         return customer;
     }
     async update(id, updateCustomerDto) {
+        var _a, _b, _c, _d, _e, _f;
         const customer = await this.customerRepository.findOne({ where: { id } });
         if (!customer) {
             throw new common_1.NotFoundException(`Customer with ID ${id} not found`);
@@ -65,22 +67,22 @@ let CustomersService = class CustomersService {
             customer.customerName = updateCustomerDto.customerName;
         }
         if (updateCustomerDto.streetAddress !== undefined) {
-            customer.streetAddress = updateCustomerDto.streetAddress || null;
+            customer.streetAddress = (_a = updateCustomerDto.streetAddress) !== null && _a !== void 0 ? _a : null;
         }
         if (updateCustomerDto.postalCode !== undefined) {
-            customer.postalCode = updateCustomerDto.postalCode || null;
+            customer.postalCode = (_b = updateCustomerDto.postalCode) !== null && _b !== void 0 ? _b : null;
         }
         if (updateCustomerDto.city !== undefined) {
-            customer.city = updateCustomerDto.city || null;
+            customer.city = (_c = updateCustomerDto.city) !== null && _c !== void 0 ? _c : null;
         }
         if (updateCustomerDto.contactPerson !== undefined) {
-            customer.contactPerson = updateCustomerDto.contactPerson || null;
+            customer.contactPerson = (_d = updateCustomerDto.contactPerson) !== null && _d !== void 0 ? _d : null;
         }
         if (updateCustomerDto.contactPersonPhone !== undefined) {
-            customer.contactPersonPhone = updateCustomerDto.contactPersonPhone || null;
+            customer.contactPersonPhone = (_e = updateCustomerDto.contactPersonPhone) !== null && _e !== void 0 ? _e : null;
         }
         if (updateCustomerDto.contactPersonEmail !== undefined) {
-            customer.contactPersonEmail = updateCustomerDto.contactPersonEmail || null;
+            customer.contactPersonEmail = (_f = updateCustomerDto.contactPersonEmail) !== null && _f !== void 0 ? _f : null;
         }
         await this.customerRepository.save(customer);
         return this.customerRepository.findOne({ where: { id } });

@@ -17,12 +17,12 @@ export class CustomersService {
     const customer = this.customerRepository.create({
       id: uuidv4(),
       customerName: createCustomerDto.customerName,
-      streetAddress: createCustomerDto.streetAddress || null,
-      postalCode: createCustomerDto.postalCode || null,
-      city: createCustomerDto.city || null,
-      contactPerson: createCustomerDto.contactPerson || null,
-      contactPersonPhone: createCustomerDto.contactPersonPhone || null,
-      contactPersonEmail: createCustomerDto.contactPersonEmail || null,
+      streetAddress: createCustomerDto.streetAddress ?? null,
+      postalCode: createCustomerDto.postalCode ?? null,
+      city: createCustomerDto.city ?? null,
+      contactPerson: createCustomerDto.contactPerson ?? null,
+      contactPersonPhone: createCustomerDto.contactPersonPhone ?? null,
+      contactPersonEmail: createCustomerDto.contactPersonEmail ?? null,
     });
     return await this.customerRepository.save(customer);
   }
@@ -59,22 +59,22 @@ export class CustomersService {
       customer.customerName = updateCustomerDto.customerName;
     }
     if (updateCustomerDto.streetAddress !== undefined) {
-      customer.streetAddress = updateCustomerDto.streetAddress || null;
+      customer.streetAddress = updateCustomerDto.streetAddress ?? null;
     }
     if (updateCustomerDto.postalCode !== undefined) {
-      customer.postalCode = updateCustomerDto.postalCode || null;
+      customer.postalCode = updateCustomerDto.postalCode ?? null;
     }
     if (updateCustomerDto.city !== undefined) {
-      customer.city = updateCustomerDto.city || null;
+      customer.city = updateCustomerDto.city ?? null;
     }
     if (updateCustomerDto.contactPerson !== undefined) {
-      customer.contactPerson = updateCustomerDto.contactPerson || null;
+      customer.contactPerson = updateCustomerDto.contactPerson ?? null;
     }
     if (updateCustomerDto.contactPersonPhone !== undefined) {
-      customer.contactPersonPhone = updateCustomerDto.contactPersonPhone || null;
+      customer.contactPersonPhone = updateCustomerDto.contactPersonPhone ?? null;
     }
     if (updateCustomerDto.contactPersonEmail !== undefined) {
-      customer.contactPersonEmail = updateCustomerDto.contactPersonEmail || null;
+      customer.contactPersonEmail = updateCustomerDto.contactPersonEmail ?? null;
     }
 
     await this.customerRepository.save(customer);
