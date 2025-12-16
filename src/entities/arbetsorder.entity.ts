@@ -40,8 +40,14 @@ export class Arbetsorder {
   @Column({ name: 'customerOrderNumber', nullable: true })
   customerOrderNumber: string | null;
 
-  @Column({ name: 'contactPersonTel', nullable: true })
-  contactPersonTel: string | null;
+  @Column({ name: 'contactPerson', nullable: true })
+  contactPerson: string | null;
+
+  @Column({ name: 'contactPersonPhone', nullable: true })
+  contactPersonPhone: string | null;
+
+  @Column({ name: 'contactPersonEmail', nullable: true })
+  contactPersonEmail: string | null;
 
   @Column({ name: 'workType', nullable: true })
   workType: string | null;

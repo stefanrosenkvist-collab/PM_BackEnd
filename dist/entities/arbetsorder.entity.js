@@ -53,9 +53,17 @@ __decorate([
     __metadata("design:type", String)
 ], Arbetsorder.prototype, "customerOrderNumber", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ name: 'contactPersonTel', nullable: true }),
+    (0, typeorm_1.Column)({ name: 'contactPerson', nullable: true }),
     __metadata("design:type", String)
-], Arbetsorder.prototype, "contactPersonTel", void 0);
+], Arbetsorder.prototype, "contactPerson", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'contactPersonPhone', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "contactPersonPhone", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ name: 'contactPersonEmail', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "contactPersonEmail", void 0);
 __decorate([
     (0, typeorm_1.Column)({ name: 'workType', nullable: true }),
     __metadata("design:type", String)

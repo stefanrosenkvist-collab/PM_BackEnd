@@ -32,7 +32,15 @@ export class CreateArbetsorderDto {
 
   @IsString()
   @IsOptional()
-  contactPersonTel?: string;
+  contactPerson?: string;
+
+  @IsString()
+  @IsOptional()
+  contactPersonPhone?: string;
+
+  @IsString()
+  @IsOptional()
+  contactPersonEmail?: string;
 
   @IsString()
   @IsOptional()
