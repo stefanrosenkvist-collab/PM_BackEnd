@@ -22,8 +22,8 @@ async function bootstrap() {
     transform: true,
   }));
   
-  await app.listen(3000);
-  console.log('Backend running on http://localhost:3000');
+  await app.listen(3000, '192.168.1.114');
+  console.log('Backend running on http://192.168.1.114:3000');
 }
 
 bootstrap();
