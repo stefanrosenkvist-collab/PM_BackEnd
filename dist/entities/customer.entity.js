@@ -31,7 +31,7 @@ __decorate([
     __metadata("design:type", String)
 ], Customer.prototype, "postalCode", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
+    (0, typeorm_1.Column)({ name: 'city', nullable: true }),
     __metadata("design:type", String)
 ], Customer.prototype, "city", void 0);
 __decorate([

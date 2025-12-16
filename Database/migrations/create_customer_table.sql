@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS public."Customer"
     "customerName" text COLLATE pg_catalog."default" NOT NULL,
     "streetAddress" text COLLATE pg_catalog."default",
     "postalCode" text COLLATE pg_catalog."default",
-    city text COLLATE pg_catalog."default",
+    "city" text COLLATE pg_catalog."default",
     "contactPerson" text COLLATE pg_catalog."default",
     "contactPersonPhone" text COLLATE pg_catalog."default",
     "contactPersonEmail" text COLLATE pg_catalog."default",

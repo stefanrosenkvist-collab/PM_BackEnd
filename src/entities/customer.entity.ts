@@ -20,7 +20,7 @@ export class Customer {
   @Column({ name: 'postalCode', nullable: true })
   postalCode: string | null;
 
-  @Column({ nullable: true })
+  @Column({ name: 'city', nullable: true })
   city: string | null;
 
   @Column({ name: 'contactPerson', nullable: true })
