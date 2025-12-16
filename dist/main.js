@@ -41,12 +41,21 @@ const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    // Get configuration from environment variables with defaults
+    const host = process.env.HOST || '0.0.0.0'; // 0.0.0.0 allows all network interfaces
+    const port = parseInt(process.env.PORT || '3000', 10);
+    const frontendPort = process.env.FRONTEND_PORT || '5173';
+    // Build CORS origins dynamically
+    const corsOrigins = [
+        `http://localhost:${frontendPort}`, // Always allow localhost
+    ];
+    // If host is not localhost/0.0.0.0, add it to CORS origins
+    if (host !== '0.0.0.0' && host !== 'localhost' && host !== '127.0.0.1') {
+        corsOrigins.push(`http://${host}:${frontendPort}`);
+    }
     // Enable CORS for frontend
     app.enableCors({
-        origin: [
-            'http://localhost:5173', // Vite dev server (localhost)
-            'http://192.168.1.114:5173', // Vite dev server (IP address)
-        ],
+        origin: corsOrigins,
         credentials: true,
     });
     // Enable validation pipe for DTOs
@@ -55,8 +64,9 @@ async function bootstrap() {
         forbidNonWhitelisted: true,
         transform: true,
     }));
-    await app.listen(3000, '192.168.1.114');
-    console.log('Backend running on http://192.168.1.114:3000');
+    await app.listen(port, host);
+    const displayHost = host === '0.0.0.0' ? 'localhost' : host;
+    console.log(`Backend running on http://${displayHost}:${port}`);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
