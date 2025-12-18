@@ -12,7 +12,7 @@ async function bootstrap() {
   // Get configuration from environment variables with defaults
   const host = process.env.HOST || '192.168.1.114'; // Default to specific IP for network access
   const port = parseInt(process.env.PORT || '3000', 10);
-  const frontendPort = process.env.FRONTEND_PORT || '5173';
+  const frontendPort = process.env.FRONTEND_PORT || '5175';
   
   // Build CORS origins dynamically
   const corsOrigins = [
