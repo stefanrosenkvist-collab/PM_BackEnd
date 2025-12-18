@@ -42,7 +42,7 @@ dotenv.config();
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     // Get configuration from environment variables with defaults
-    const host = process.env.HOST || '192.168.1.114'; // Default to specific IP for network access
+    const host = process.env.HOST || '0.0.0.0'; // Default to all network interfaces for network access
     const port = parseInt(process.env.PORT || '3000', 10);
     const frontendPort = process.env.FRONTEND_PORT || '5175';
     // Build CORS origins dynamically
