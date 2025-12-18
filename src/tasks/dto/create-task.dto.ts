@@ -16,7 +16,9 @@ export class CreateTaskDto {
   status: string;
 
   @IsString()
-  @IsIn(['low', 'medium', 'high'])
+  @IsIn(['low', 'medium', 'high'], {
+    message: 'priority must be one of the following values: low, medium, high'
+  })
   priority: string;
 
   @IsString()

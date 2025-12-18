@@ -30,7 +30,9 @@ __decorate([
 ], CreateProjectDto.prototype, "status", void 0);
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsIn)(['low', 'medium', 'high']),
+    (0, class_validator_1.IsIn)(['low', 'medium', 'high'], {
+        message: 'priority must be one of the following values: low, medium, high'
+    }),
     __metadata("design:type", String)
 ], CreateProjectDto.prototype, "priority", void 0);
 __decorate([
