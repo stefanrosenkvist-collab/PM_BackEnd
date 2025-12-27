@@ -21,6 +21,9 @@ export class Arbetsorder {
   @JoinColumn({ name: 'taskId' })
   task: Task | null;
 
+  @Column({ name: 'projectId', nullable: true })
+  projectId: string | null;
+
   // Header fields
   @Column({ name: 'workplace', nullable: true })
   workplace: string | null;

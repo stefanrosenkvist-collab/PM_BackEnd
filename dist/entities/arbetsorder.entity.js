@@ -29,6 +29,10 @@ __decorate([
     __metadata("design:type", task_entity_1.Task)
 ], Arbetsorder.prototype, "task", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ name: 'projectId', nullable: true }),
+    __metadata("design:type", String)
+], Arbetsorder.prototype, "projectId", void 0);
+__decorate([
     (0, typeorm_1.Column)({ name: 'workplace', nullable: true }),
     __metadata("design:type", String)
 ], Arbetsorder.prototype, "workplace", void 0);
