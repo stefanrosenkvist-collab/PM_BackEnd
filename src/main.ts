@@ -17,11 +17,10 @@ async function bootstrap() {
   // Build CORS origins dynamically
   const corsOrigins = [
     `http://localhost:${frontendPort}`, // Always allow localhost
-    `http://192.168.1.114:${frontendPort}`, // Always allow network IP
   ];
   
-  // If host is not localhost/0.0.0.0/192.168.1.114, add it to CORS origins
-  if (host !== '0.0.0.0' && host !== 'localhost' && host !== '127.0.0.1' && host !== '192.168.1.114') {
+  // If host is not localhost/0.0.0.0, add it to CORS origins
+  if (host !== '0.0.0.0' && host !== 'localhost' && host !== '127.0.0.1') {
     corsOrigins.push(`http://${host}:${frontendPort}`);
   }
   
