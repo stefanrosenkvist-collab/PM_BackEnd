@@ -6,4 +6,5 @@ const create_arbetsorder_dto_1 = require("./create-arbetsorder.dto");
 class UpdateArbetsorderDto extends (0, mapped_types_1.PartialType)(create_arbetsorder_dto_1.CreateArbetsorderDto) {
 }
 exports.UpdateArbetsorderDto = UpdateArbetsorderDto;
+projectId ?  : string;
 //# sourceMappingURL=update-arbetsorder.dto.js.map

@@ -5,6 +5,10 @@ export class CreateArbetsorderDto {
   @IsOptional()
   taskId?: string;
 
+   @IsString()
+   @IsOptional()
+   projectId?: string;
+
   // Header fields
   @IsString()
   @IsOptional()

@@ -3,3 +3,7 @@ import { CreateArbetsorderDto } from './create-arbetsorder.dto';
 
 export class UpdateArbetsorderDto extends PartialType(CreateArbetsorderDto) {}
 
+   @IsString()
+   @IsOptional()
+   projectId?: string;
+
