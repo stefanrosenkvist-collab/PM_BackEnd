@@ -11,13 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UpdateArbetsorderDto = void 0;
 const mapped_types_1 = require("@nestjs/mapped-types");
+const class_validator_1 = require("class-validator");
 const create_arbetsorder_dto_1 = require("./create-arbetsorder.dto");
 class UpdateArbetsorderDto extends (0, mapped_types_1.PartialType)(create_arbetsorder_dto_1.CreateArbetsorderDto) {
 }
 exports.UpdateArbetsorderDto = UpdateArbetsorderDto;
 __decorate([
-    IsString(),
-    IsOptional(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
     __metadata("design:type", String)
 ], UpdateArbetsorderDto.prototype, "projectId", void 0);
 //# sourceMappingURL=update-arbetsorder.dto.js.map
