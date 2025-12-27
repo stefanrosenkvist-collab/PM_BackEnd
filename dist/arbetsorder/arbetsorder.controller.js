@@ -34,6 +34,7 @@ let ArbetsorderController = class ArbetsorderController {
         return this.arbetsorderService.findOne(id);
     }
     update(id, updateArbetsorderDto) {
+        console.log(`[ArbetsorderController] PATCH request received for arbetsorder ${id}`);
         return this.arbetsorderService.update(id, updateArbetsorderDto);
     }
     remove(id) {

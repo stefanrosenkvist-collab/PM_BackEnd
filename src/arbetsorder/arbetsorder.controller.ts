@@ -27,6 +27,7 @@ export class ArbetsorderController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateArbetsorderDto: UpdateArbetsorderDto) {
+    console.log(`[ArbetsorderController] PATCH request received for arbetsorder ${id}`);
     return this.arbetsorderService.update(id, updateArbetsorderDto);
   }
 
